@@ -1,10 +1,15 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: nginx-project
+  labels: 
+   app: nginx
+   name: nginx
+namespace: default
 spec:
-  type: LoadBalancer
-  ports:
+    ports:
     - port: 80
+    protocol: TCP
+    targetPort: 80
   selector:
-    app: nginx-project
+    app: nginx
+type: NodePort
